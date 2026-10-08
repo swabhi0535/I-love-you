@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Little Surprise For You ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:22px;display:flex;align-items:center;justify-content:center;
+ font-family:Georgia,"Times New Roman",serif;color:#542b3c;
+ background:radial-gradient(circle at 20% 10%,#fff 0 8%,transparent 30%),
+ linear-gradient(135deg,#fff4f7,#ffe4ec 55%,#fff8fb);overflow-x:hidden
+}
+#app{width:min(650px,100%);text-align:center;position:relative}
+.card{
+ background:rgba(255,255,255,.9);border:1px solid #f4cad8;border-radius:30px;
+ padding:28px 22px;box-shadow:0 20px 65px rgba(115,42,70,.16);position:relative;overflow:hidden
+}
+.flowers{font-size:30px;letter-spacing:8px;line-height:1.5}
+h1{font-size:clamp(29px,8vw,46px);color:#a73762;margin:10px 0}
+h2{color:#a73762;font-size:28px}
+p{font-size:17px;line-height:1.75;margin:11px 0}
+.sub{color:#986c7d;font-size:14px}
+button{
+ border:0;border-radius:999px;padding:14px 24px;min-height:48px;margin-top:18px;
+ background:#c94370;color:#fff;font-size:16px;font-weight:700;cursor:pointer;
+ box-shadow:0 9px 22px rgba(201,67,112,.25);transition:.2s
+}
+button:hover{transform:translateY(-2px)}
+button.alt{background:#fff;color:#a73762;border:1px solid #efbdcf;box-shadow:none}
+.hidden{display:none!important}
+.fade{animation:fade .65s ease}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.envelope{
+ font-size:86px;margin:12px auto;display:inline-block;cursor:pointer;
+ animation:shake 1.05s infinite
+}
+@keyframes shake{
+ 0%,100%{transform:rotate(0)}20%{transform:rotate(-5deg)}40%{transform:rotate(5deg)}
+ 60%{transform:rotate(-4deg)}80%{transform:rotate(4deg)}
+}
+.letter{
+ margin:18px auto 0;max-width:550px;text-align:left;padding:23px;
+ background:#fffafc;border:1px solid #f2d2dc;border-radius:22px;
+ box-shadow:0 8px 25px rgba(120,50,75,.07)
+}
+.signature{text-align:right;font-style:italic;color:#a73762}
+.box{
+ font-size:92px;display:inline-block;margin-top:15px;cursor:pointer;
+ animation:boxbounce 1.5s ease-in-out infinite
+}
+@keyframes boxbounce{50%{transform:translateY(-9px) rotate(2deg)}}
+.boxhint{font-weight:700;color:#a73762}
+.ringScene{min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gift{font-size:85px;animation:openGift .7s ease}
+@keyframes openGift{from{transform:scale(.6) rotate(-5deg);opacity:0}to{transform:scale(1);opacity:1}}
+.ring{
+ width:86px;height:86px;border:13px solid #d6a62f;border-radius:50%;
+ position:relative;margin:4px auto 12px;filter:drop-shadow(0 8px 8px rgba(150,100,20,.2));
+ animation:ringPop .8s ease
+}
+.ring:after{
+ content:"";position:absolute;width:34px;height:34px;left:11px;top:-31px;
+ background:#fff;border:5px solid #e8c34b;transform:rotate(45deg);border-radius:8px 8px 4px 8px;
+ box-shadow:0 0 20px #ffe88a
+}
+@keyframes ringPop{from{opacity:0;transform:translateY(35px) scale(.25)}to{opacity:1;transform:none}}
+.spark{position:fixed;pointer-events:none;z-index:5;animation:float 4.8s linear forwards}
+@keyframes float{from{transform:translateY(25px) scale(.7);opacity:0}15%{opacity:.9}to{transform:translateY(-105vh) scale(1.2);opacity:0}}
+.yes{
+ margin-top:20px;background:linear-gradient(135deg,#c94370,#a73762)
+}
+.final{
+ margin-top:20px;padding:20px;border-radius:22px;background:#fff5f8;border:1px solid #f2c9d7
+}
+#letterText p{margin:13px 0}
+</style>
+</head>
+<body>
+<main id="app">
+<div class="card">
+
+<section id="home">
+ <div class="flowers">🌷 🌸 🌹 🌸 🌷</div>
+ <div style="font-size:52px;margin-top:5px">💕</div>
+ <h1>A Little Something For You</h1>
+ <p>Made with a little love, a little craziness, and a lot of feelings.</p>
+ <p class="sub">For my special girl — my princess ❤️</p>
+ <button onclick="go('envelope')">Start the surprise ✨</button>
+ <div class="flowers" style="margin-top:20px">🌼 🌸 🌼 🌸 🌼</div>
+</section>
+
+<section id="envelope" class="hidden fade">
+ <div class="flowers">🌸 🌷 🌸</div>
+ <h2>Someone has a letter for you... 👀</h2>
+ <div class="envelope" role="button" tabindex="0" onclick="openLetter()" onkeydown="if(event.key==='Enter')openLetter()">💌</div>
+ <p><b>Click me...</b></p>
+ <p class="sub">I promise there's something cute waiting inside 🫣</p>
+</section>
+
+<section id="letter" class="hidden fade">
+ <div class="flowers">🌷 💕 🌷</div>
+ <h2>For my princess 💌</h2>
+ <div class="letter" id="letterText">
+  <p>Heyyy my Madam Ji ❤️</p>
+  <p>I know I'm not always the best person, and I know there have been times when I've hurt you or made you upset. I'm not going to pretend that I'm perfect, because I'm definitely not. But one thing I can promise you is that I genuinely want to become better and do everything I can to make you feel loved, respected, and special. 🥹🫂</p>
+  <p>Sometimes I even think about how crazy our story is and how quickly you became so important to me. It's only our <b>2nd day of our relationship</b>, but somehow you've already made such a special place in my heart. ❤️</p>
+  <p>And honestly, I can't properly express how much I love you. I can write a hundred messages and still feel like they aren't enough to explain what I feel for you. You're just <b>too much special for me</b>, my princess. 👑💓</p>
+  <p>My dukkar, my babeee, my bubu, my rasmalaii, my rani, my pookiee, my cutieee and my Madam Ji — you have so many names because somehow one name is never enough for you. 😭❤️ Every nickname comes with its own little feeling, and every time I say one of them, it just makes me smile.</p>
+  <p>I know we're far away from each other, and sometimes a screen can make things feel difficult. But even through a screen, your presence can make my day better. A simple message from you, one silly conversation, one laugh, or even you just being your cute little self can make me ridiculously happy. 🫶</p>
+  <p>I don't want to promise you some perfect fairytale, because real relationships aren't perfect. I just want to promise that I'll keep trying. I'll try to understand you better, listen when you need me, say sorry when I'm wrong, make you smile when you're sad, and appreciate you instead of taking you for granted.</p>
+  <p>You mean more to me than I know how to put into words. I don't want to imagine my days without your presence in them because you've become such a beautiful part of them. And whenever things feel difficult, I want us to remember why we chose each other and keep choosing kindness, honesty, and each other. 🧿🫂</p>
+  <p>So yes, maybe our story is still tiny. Maybe we're only on day two. But I'm really happy that this little story is ours, and I'm excited for all the silly conversations, memories, arguments that end in laughing, random messages, and beautiful moments still waiting for us. 💗</p>
+  <p>And if I ever fail to say it properly, let this little letter say it for me:</p>
+  <p><b>I LOVE YOUHHH ALOTTTTT, MY PRINCESS. ❤️</b><br>
+  You're my dukkar, babeee, bubu, rasmalaii, rani, pookiee, cutieee and Madam Ji. 🥹💓<br>
+  Please keep being the wonderfully special person you are. 🧿🫂💍</p>
+  <p class="signature">Happy 2nd day, my Madam Ji ❤️<br>Here's to many more little memories together. 🥹💗</p>
+ </div>
+ <button onclick="go('box')">There's one more thing... 🎁</button>
+</section>
+
+<section id="box" class="hidden fade">
+ <div class="flowers">🌸 🌹 🌸</div>
+ <h2>A tiny mystery... 👀</h2>
+ <p>Okay, princess... the letter wasn't the whole surprise.</p>
+ <div class="box" role="button" tabindex="0" onclick="openBox()" onkeydown="if(event.key==='Enter')openBox()">🎁</div>
+ <p class="boxhint">OPEN ME 💗</p>
+ <p class="sub">Don't be shy, bacchuu 😌</p>
+</section>
+
+<section id="ring" class="hidden fade">
+ <div class="ringScene">
+  <div class="gift">🎁</div>
+  <div class="ring" aria-label="A golden ring"></div>
+  <h1>💍</h1>
+  <h2>Will you be mine? ❤️</h2>
+  <p>Not a serious proposal, just a tiny romantic promise from your slightly crazy person. 🥹</p>
+  <p><b>Can I keep making you smile, my princess? 🌷</b></p>
+  <button class="yes" onclick="sayYes()">YES, you silly ❤️</button>
+  <button class="alt" onclick="sayYes()">Of course, bacchuu 🥹</button>
+ </div>
+</section>
+
+<section id="final" class="hidden fade">
+ <div class="flowers">🌷 🌸 💕 🌸 🌷</div>
+ <div style="font-size:70px">💍❤️</div>
+ <h1>YAYYY! 🥹</h1>
+ <div class="final">
+  <p><b>My my princess, you just made this little surprise perfect. ❤️</b></p>
+  <p>Here's to day 2, and to all the cute little moments still waiting for us.</p>
+  <p>Now come here, bacchuu... I have a million virtual hugs to give you. 🫂💕</p>
+ </div>
+ <p class="sub">End of surprise — but definitely not the end of our story. 🌸</p>
+</section>
+
+</div>
+</main>
+
+<script>
+const ids=["home","envelope","letter","box","ring","final"];
+function go(id){
+ ids.forEach(x=>document.getElementById(x).classList.add("hidden"));
+ document.getElementById(id).classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function openLetter(){go("letter"); hearts(8)}
+function openBox(){go("ring"); hearts(18)}
+function sayYes(){go("final"); hearts(30)}
+function hearts(n){
+ for(let i=0;i<n;i++){
+  const s=document.createElement("span");
+  s.className="spark";
+  s.textContent=["❤️","💕","✨","🌸","🌷"][Math.floor(Math.random()*5)];
+  s.style.left=Math.random()*100+"vw";
+  s.style.bottom="-20px";
+  s.style.animationDelay=(Math.random()*1.5)+"s";
+  s.style.fontSize=(14+Math.random()*20)+"px";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),6500);
+ }
+}
+</script>
+</body>
+</html>
